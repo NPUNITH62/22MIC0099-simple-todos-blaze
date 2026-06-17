@@ -1,0 +1,119 @@
+<body>
+    {{> mainContainer}}
+</body>
+
+<template name="mainContainer">
+  <div class="app">
+    <header>
+      <div class="app-bar">
+        <div class="app-header">
+          <h1>📝️ To-Do List</h1>
+          {{> loginButtons}}
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      {{#if currentUser}}
+        {{> taskForm}}
+      {{else}}
+        <p class="login-prompt">Log in to add and manage your own tasks.</p>
+      {{/if}}
+
+      <div class="filter">
+        <label>
+          <input type="checkbox" checked="{{hideCompletedFilter}}" id="hide-completed-checkbox" />
+          Hide Completed Tasks
+        </label>
+        <span class="counter">{{incompleteCount}} pending</span>
+      </div>
+
+      <ul class="tasks" id="tasks-list">
+        {{#each tasks}}
+          {{> task}}
+        {{/each}}
+      </ul>
+    </div>
+
+    {{#if showLoginForm}}
+      {{> loginForm}}
+    {{/if}}
+  </div>
+</template>
+
+<template name="loginButtons">
+  {{#if currentUser}}
+    <span class="logged-in-as">
+      Hi, {{currentUser.username}}!
+      <button class="logout">Log out</button>
+    </span>
+  {{else}}
+    <button class="login">Log in / Sign up</button>
+  {{/if}}
+</template>
+
+<template name="loginForm">
+  <div class="login-form-overlay">
+    <form class="login-form">
+      <h2>Log in or create an account</h2>
+      <input type="text" name="username" placeholder="Username" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <div class="login-form-actions">
+        <button type="submit" name="login">Log In</button>
+        <button type="submit" name="signup">Sign Up</button>
+        <button type="button" class="cancel-login">Cancel</button>
+      </div>
+      {{#if loginError}}
+        <p class="login-error">{{loginError}}</p>
+      {{/if}}
+    </form>
+  </div>
+</template>
+
+<template name="taskForm">
+  <form class="task-form">
+    <input
+      type="text"
+      name="text"
+      placeholder="Type to add new tasks"
+      required
+    />
+
+    <select name="category">
+      <option value="Work">Work</option>
+      <option value="Personal" selected>Personal</option>
+      <option value="Urgent">Urgent</option>
+    </select>
+
+    <label class="private-toggle">
+      <input type="checkbox" name="private" />
+      Private
+    </label>
+
+    <button type="submit">Add Task</button>
+  </form>
+</template>
+
+<template name="task">
+  <li class="task {{#if checked}}checked{{/if}}" data-id="{{_id}}">
+    <span class="drag-handle" title="Drag to reorder">⠿</span>
+
+    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+
+    <span class="task-text">{{text}}</span>
+
+    <select class="category-select category-{{category}}">
+      <option value="Work" selected="{{isCategory 'Work'}}">Work</option>
+      <option value="Personal" selected="{{isCategory 'Personal'}}">Personal</option>
+      <option value="Urgent" selected="{{isCategory 'Urgent'}}">Urgent</option>
+    </select>
+
+    {{#if isOwner}}
+      <button class="toggle-private">
+        {{#if private}}🔒 Private{{else}}🌐 Public{{/if}}
+      </button>
+    {{/if}}
+
+    <button class="delete">&times;</button>
+  </li>
+</template>

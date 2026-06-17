@@ -1,0 +1,6 @@
+.meteor/local
+.meteor/meteorite
+.meteor/dev_bundle
+node_modules/
+*.log
+.DS_Store

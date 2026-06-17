@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  }
+
+body {
+font-family: 'Poppins', sans-serif;
+background: linear-gradient(135deg, #eef2ff, #f8fafc);
+margin: 0;
+color: #1a1a1a;
+}
+
+.app {
+max-width: 850px;
+margin: 20px auto;
+min-height: 90vh;
+background: #fff;
+border-radius: 20px;
+overflow: hidden;
+box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+header {
+background: linear-gradient(135deg, #2563eb, #1e40af);
+color: #fff;
+}
+
+.app-bar {
+padding: 22px 28px;
+}
+
+.app-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.app-header h1 {
+font-size: 1.8rem;
+margin: 0;
+font-weight: 700;
+}
+
+.logged-in-as {
+font-size: 0.95rem;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+button {
+cursor: pointer;
+border: none;
+border-radius: 10px;
+padding: 8px 16px;
+font-size: 0.9rem;
+font-weight: 600;
+transition: all 0.25s ease;
+}
+
+button:hover {
+transform: translateY(-2px);
+}
+
+button.login,
+button.logout {
+background: #ffffff;
+color: #1e40af;
+}
+
+.main {
+padding: 24px;
+}
+
+.login-prompt {
+color: #777;
+font-style: italic;
+}
+
+.task-form {
+display: flex;
+gap: 10px;
+margin-bottom: 20px;
+flex-wrap: wrap;
+}
+
+.task-form input[type='text'] {
+flex: 1;
+min-width: 180px;
+padding: 12px;
+border: 1px solid #d1d5db;
+border-radius: 10px;
+outline: none;
+}
+
+.task-form input[type='text']:focus {
+border-color: #2563eb;
+}
+
+.task-form select {
+padding: 12px;
+border-radius: 10px;
+border: 1px solid #d1d5db;
+}
+
+.private-toggle {
+display: flex;
+align-items: center;
+gap: 6px;
+font-size: 0.9rem;
+}
+
+.task-form button[type='submit'] {
+background: #2563eb;
+color: white;
+}
+
+.filter {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 18px;
+font-size: 0.95rem;
+color: #555;
+}
+
+ul.tasks {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.task {
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 14px;
+margin-bottom: 12px;
+border-radius: 14px;
+background: white;
+box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+transition: all 0.25s ease;
+}
+
+.task:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.task.checked .task-text {
+text-decoration: line-through;
+color: #999;
+}
+
+.task.sortable-ghost {
+opacity: 0.4;
+}
+
+.drag-handle {
+cursor: grab;
+color: #94a3b8;
+font-size: 1.2rem;
+padding: 0 4px;
+}
+
+.task-text {
+flex: 1;
+font-weight: 500;
+}
+
+.category-select {
+border: none;
+border-radius: 20px;
+padding: 6px 12px;
+font-size: 0.8rem;
+font-weight: 700;
+color: #fff;
+}
+
+.category-Work {
+background: #2563eb;
+}
+
+.category-Personal {
+background: #16a34a;
+}
+
+.category-Urgent {
+background: #dc2626;
+}
+
+.delete {
+background: transparent;
+color: #dc2626;
+font-size: 1.2rem;
+line-height: 1;
+padding: 4px 8px;
+}
+
+.toggle-private {
+font-size: 0.8rem;
+background: #eef2f7;
+}
+
+.login-form-overlay {
+position: fixed;
+inset: 0;
+background: rgba(0, 0, 0, 0.45);
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.login-form {
+background: #fff;
+padding: 30px;
+border-radius: 18px;
+width: 340px;
+display: flex;
+flex-direction: column;
+gap: 12px;
+box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.login-form input {
+padding: 12px;
+border: 1px solid #d1d5db;
+border-radius: 10px;
+}
+
+.login-form-actions {
+display: flex;
+gap: 10px;
+flex-wrap: wrap;
+}
+
+.login-error {
+color: #dc2626;
+font-size: 0.85rem;
+margin: 0;
+}
+
+.counter {
+font-weight: 700;
+color: #2563eb;
+}
+/* Mobile Responsive */
+@media (max-width: 600px) {
+
+  .app {
+    margin: 0;
+    border-radius: 0;
+    min-height: 100vh;
+  }
+
+  .app-bar {
+    padding: 16px;
+  }
+
+  .app-header {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .logged-in-as {
+    font-size: 0.8rem;
+  }
+
+  .main {
+    padding: 16px;
+  }
+
+  .task-form {
+    flex-direction: column;
+  }
+
+  .task-form input[type='text'],
+  .task-form select,
+  .task-form button {
+    width: 100%;
+  }
+
+  .filter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .task {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .task-text {
+    font-size: 0.9rem;
+  }
+
+  .category-select {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+
+  .login-form {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .login-form h2 {
+    font-size: 1.5rem;
+  }
+}
