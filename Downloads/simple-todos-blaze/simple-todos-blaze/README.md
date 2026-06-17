@@ -109,14 +109,22 @@ is allowed to see is sent to them via the `tasks` publication in
 - Add Meteor tests (`meteor test --driver-package meteortesting:mocha`).
 ## Screenshots
 
+## Screenshots
+
+### Login Page
+![Login Page](Screenshots/login-page.png)
+
 ### Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](Screenshots/dashboard.png)
+
+### Add Task
+![Add Task](Screenshots/add-task.png)
 
 ### Task Categories
-![Categories](screenshots/categories.png)
+![Categories](Screenshots/categories.png)
 
 ### Drag-and-Drop Reordering
-![Drag and Drop](screenshots/drag-drop.png)
+![Drag and Drop](Screenshots/drag-drop.png)
 
 ### Mobile Responsive View
-![Mobile View](screenshots/mobile-view.png)
+![Mobile View](Screenshots/mobile-view.png)
